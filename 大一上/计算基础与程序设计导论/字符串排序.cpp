@@ -1,0 +1,55 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	int n,i,j,m,d;
+	scanf("%d",&n);
+	char a[n][101]={0},r,str1[102]={0},str2[102]={0};
+	getchar();
+	for(i=0;i<n;i++)
+	{
+		j=0;
+		scanf("%c",&a[i][0]);
+		while(a[i][j]!='\n')
+		{
+			j++;
+			scanf("%c",&a[i][j]);
+		}
+	}
+	for(m=0;m<n;m++)
+	{
+		for(d=0;d<n-1;d++)
+	{
+		for(j=0;j<101;j++)
+		{
+			str1[102]={'\0'};
+			str2[102]={'\0'};
+			str1[j]=a[d][j];
+			str2[j]=a[d+1][j];
+		}
+		if(strcmp(str1,str2)>0)
+		{
+			for(j=0;j<101;j++)
+			{
+				for(i=d;i<d+1;i++)
+				{
+					r=a[i][j];
+					a[i][j]=a[i+1][j];
+					a[i+1][j]=r;
+				}
+			}
+		}
+	}
+	} 
+	for(i=0;i<n;i++)
+	{
+		j=0;
+		while(a[i][j]!='\n')
+		{
+			printf("%c",a[i][j]);
+			j++;
+		}
+		printf("\n");
+	}
+	return 0;
+}

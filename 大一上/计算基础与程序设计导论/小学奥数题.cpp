@@ -1,0 +1,51 @@
+#include<stdio.h>
+int main()
+{
+	int n,c;
+	long long x1,x2,i,j,a,b;
+	scanf("%d",&n);
+	b=1;
+	if(n==1)
+	printf("1/3");
+	if(n>1)
+	{
+		x1=1;
+		x2=3;
+		c=3;
+		while(c<=n)
+		{
+			x1=x1*(c+2)+x2*c;
+			x2=x2*(c+2);
+			c=c+2;
+			if(x1%2==0&&x2%2==0)
+			{
+			i=x1/2;
+			j=x2/2;
+			b=b*2;
+			while(i%2==0&&j%2==0)
+			{
+				i=i/2;
+				j=j/2;
+				b=b*2; 
+			}
+			}
+			else
+			{
+				i=x1;
+				j=x2;
+			}
+			while(i!=j)
+			{
+				if(i>j)
+				i=i-j;
+				if(i<j)
+				j=j-i;
+			}
+			a=b*j;
+			x1=x1/a;
+			x2=x2/a;
+		}
+		printf("%lld/%lld",x1,x2);
+	}
+	return 0;	
+}
